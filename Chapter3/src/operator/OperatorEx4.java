@@ -14,5 +14,4 @@ public class OperatorEx4 {
 		System.out.println(num2 << 3);
 		System.out.println(num2 >> 2);
 	}
-
 }
