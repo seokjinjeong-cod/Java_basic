@@ -15,7 +15,6 @@ public class CompanyTest {
 		
 		Calendar calendar = Calendar.getInstance();
 		
-		System.out.println(calendar);
 	}
 
 }
