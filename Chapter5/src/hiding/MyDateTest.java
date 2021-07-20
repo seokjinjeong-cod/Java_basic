@@ -7,10 +7,13 @@ public class MyDateTest {
 		MyDate date = new MyDate();
 
 		date.setYear(2020);
-		date.setMonth(5234);
+		date.setMonth(5);
 		date.setDay(20);
 		
 		date.showDate();
+		
+		MyDate date2 = new MyDate();
+		date2.setYear(2012);
 	}
 
 }
