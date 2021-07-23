@@ -9,13 +9,12 @@ public class BeginnerLevel extends PlayerLevel {
 
 	@Override
 	public void jump() {
-		System.out.println("점프 못하지롱");
+		System.out.println("점프 불가능");
 	}
 
 	@Override
 	public void turn() {
-		System.out.println("턴 못하지롱");
-		
+		System.out.println("턴 불가능");
 	}
 
 	@Override
@@ -23,4 +22,5 @@ public class BeginnerLevel extends PlayerLevel {
 		System.out.println("***** 초급자 레벨입니다. *****");
 	}
 
+	
 }

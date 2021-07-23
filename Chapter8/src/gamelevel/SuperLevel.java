@@ -9,18 +9,18 @@ public class SuperLevel extends PlayerLevel {
 
 	@Override
 	public void jump() {
-		System.out.println("매우 높게 점프 합니다.");
+		System.out.println("높게 점프 합니다.");
 	}
 
 	@Override
 	public void turn() {
 		System.out.println("턴 합니다.");
-		
 	}
 
 	@Override
 	public void showLevelMessage() {
-		System.out.println("***** 상급자 레벨입니다. *****");
+		System.out.println("***** 고급자 레벨입니다. *****");
 	}
 
+	
 }
