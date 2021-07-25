@@ -23,7 +23,6 @@ class MyDate{
 		}else
 			return false;
 	}
-
 	@Override
 	public int hashCode() {
 		return day + month + year;
