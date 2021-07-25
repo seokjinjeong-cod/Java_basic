@@ -25,5 +25,4 @@ public class ComparatorTest {
 			System.out.println(s);
 		}
 	}
-
 }
