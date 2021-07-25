@@ -7,7 +7,7 @@ class Book implements Cloneable {
 	public Book(String title, String author) {
 		this.title = title;
 		this.author = author;
-	}
+	} 
 
 	@Override
 	public String toString() {

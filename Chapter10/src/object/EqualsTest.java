@@ -7,7 +7,7 @@ class Student{
 	public Student(int studentNum, String studentName) {
 		this.studentNum = studentNum;
 		this.studentName = studentName;
-	}
+	} 
 
 	@Override
 	public boolean equals(Object obj) {
