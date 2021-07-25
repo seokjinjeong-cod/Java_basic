@@ -28,11 +28,6 @@ class MyDate{
 	public int hashCode() {
 		return day + month + year;
 	}
-	
-	
-	
-	
-	
 }
 
 public class MyDateTest {
