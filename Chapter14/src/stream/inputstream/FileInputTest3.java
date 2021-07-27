@@ -7,7 +7,6 @@ public class FileInputTest3 {
 
 	public static void main(String[] args) {
 
-		
 		try (FileInputStream fis = new FileInputStream("input2.txt")) {
 			 int i;
 			 byte[] bs = new byte[10];

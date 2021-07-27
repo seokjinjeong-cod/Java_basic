@@ -18,5 +18,4 @@ public class FileOutputTest1 {
 			System.out.println(e);
 		}
 	}
-
 }
