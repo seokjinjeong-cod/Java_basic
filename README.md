@@ -79,7 +79,7 @@ ___
 
 - 두 개의 서로 다른 메모리에 위치한 인스턴스가 동일하다는 것은?  
 
-	논리적으로 동일:equals()의 반환값이 true  
+	논리적으로 동일 : equals()의 반환값이 true  
     
 	동일할 hashCode() 값을 가짐 : hashCode()의 반환 값이 동일  
 ___
@@ -241,3 +241,178 @@ ___
 
 - 최종 연산이 수행되어야 모든 연산이 적용되는 지연 연산
 ___
+### 오류와 예외 클래스
+- 시스템 오류(error) : 가상 머신에서 발생, 프로그래머가 처리 할 수 없음
+
+동적 메모리를 다 사용한 경우, stack over flow 등
+
+- 예외(Exception) : 프로그램에서 제어 할 수 있는 오류
+
+읽으려는 파일이 없는 경우, 네트워크나 소켓 연결 오류 등
+
+- 자바 프로그램에서는 예외에 대한 처리를 수행 함
+
+- try - catch문으로 예외 처리
+```
+try{	
+	// 예외가 발생 할 수 있는 코드 부분	
+} catch(처리할 예외 타입 e){
+	// try블록 안에서 예외가 발생했을 때 수행되는 부분
+} finally {
+	// 예외 발생 여부와 상관 없이 항상 수행 되는 부분
+	// 리소스를 정리하는 코드를 주로씀
+}
+```
+### 예외 처리 미루기
+- throws를 사용하여 예외처리 미루기
+
+- try{} 블록으로 예외를 처리하지 않고, 메서드 선언부에 throws를 추가
+
+- 예외가 발생한 메서드에서 예외 처리를 하지 않고 이 메서드를 호출한 곳에서 예외 처리를 한다는 의미
+
+- main() 에서 throws를 사용하면 가상머신에서 처리 됨
+___
+### 입출력 스트림
+- 입력 스트림 : 대상으로 부터 자료를 읽어 들이는 스트림
+
+- 출력 스트림 : 대상으로 자료를 출력하는 스트림
+
+- 바이트 단위 스트림 : 바이트 단위로 자료를 읽고 씀
+
+- 문자 단위 스트림 : 문자는 2바이트씩 처리 해야 함
+
+- 기반스트림 : 대상에 직접 자료를 읽고 쓰는 기능의 스트림
+
+- 보조스트림 : 직접 읽고 쓰는 기능은 없고 추가적인 기능을 제공해 주는 스트림
+
+- 기반 스트림이나 또 다른 보조 스트림을 생성자의 매개변수로 포함함
+
+___
+### FileReader, FileWriter
+- 파일에 문자를 읽고 쓸때 가장 많이 사용하는 클래스
+
+- 문자 인코딩 방식을 지정할 수 있음
+___
+### 보조 스트림
+- 실제 읽고쓰는 스트림이 아닌 보조적인 기능을 추가하는 스트림
+
+- FilterInputStream과 FilterOutputStream이 보조스트림의 상위 클래스
+
+- Buffered 스트림 : 내부에 8192 바이트 배열을 가지고 있음
+읽거나 쓸 때 속도가 빠름
+
+- DataInputStream/DataOutputStream : 자료가 저장된 상태 그대로 자료형을
+유지하며 읽거나 쓰는 기능을 제공하는 스트림
+___
+### 직렬화(Serialization)
+- 인스턴스의 상태를 그대로 저장하거나 네트웍으로 전송하고 이를 다시 복원(Deserialization)하는 방
+
+- ObjectInputStream과 ObjectOutputStream사용
+
+- 직렬화는 인스턴스의 내용이 외부(파일, 네트워크)로 유출되는 것이므로 프로그래머가 객체의 지렬화 가능 여부를 명시함
+
+___
+### 데코레이터 패턴(Decorator Pattern)
+- 자바의 입출력 스트림은 데코레이터 패턴을 사용
+
+- 실제 입출력 기능을 가진 객체(컴포넌트)와 그 외 다양한 기능을 제공하는  
+데코레이터(보조스트림)을 사용하여 다양한 입출력 기능을 구현
+
+- 상속보다 유연한 확장성을 가짐
+
+- 지속적인 서비스의 증가와 제거가 용이함
+___
+### Thread
+- Process
+
+- 실행중인 프로그램
+
+- OS로부터 메모리를 할당 받음
+
+- 실제 프로그램이 수행되는 작업의 최소 단위
+
+- 하나의 프로세스는 하나 이상의 Thread를 가지게 됨
+
+- 자바Thread 클래스로 부터 상속받아 구현
+___
+### Runnable 인터페이스 구현
+- 자바는 다중 상속이 허용되지 않으므로 이미 다른 클래스를 상속한 경우
+
+- Thread를 만들려면 Runnable interface를 implements하도록 한다. 
+___
+### Multi-thread 프로그래밍
+- 동시에 여러 개의 Thread가 수행되는 프로그래밍
+
+- Thread는 각각의 작업공간(context)를 가짐
+
+- 공유 자원이 있는 경우 race condition이 발생
+
+- 임계 영역에 대한 동기화(synchronization)의 구현이 필요
+___
+### Thread 우선순위
+- Thread.Min_PRIORITY(=1) ~ Thread.MAX_PRIORITY(=10)
+
+- 디폴트 우선 순위 : Thread.NORM_PRIORITY(=5)
+setPriority(int newPriority)  
+int getPriority()
+- 우선 순위가 높은 thread는 CPU를 배분 받을 확률이 높음
+___
+### join() 메서드
+- 다른 thread의 결과를 보고 진행해야 하는 일이 있는 경우 join() 메서드를 활용
+
+- join() 메서드를 호출한 thread가 non-runnable 상태가 됨
+___
+### interrupt() 메서드
+- 다른 thread에 예외에 발생시킨 interrupt를 보냄
+
+- thread가 join(), sleep(), wait() 메서드에 의해 블럭킹 되었다면  
+interrupt에 의해 다시 runable 상태가 될 수 있음
+___
+### Thread 종료하기
+- 데몬 등 무한 반복하는 thread가 종료될 수 있도록 run() 메서드 내의 while 문을 활용
+
+- Thread.stop()은 사용하지 않음
+___
+### 임계 영역(critical section)
+- 두개 이상의 thread가 동시에 접근하게 되는 리소스
+
+- 임계 영역에 동시에 thread가 접근하게 되면 실행 결과를 보장할 수 없음
+
+- thread간의 순서를 맞추는 동기화(synchronization)이 필요
+___
+### 동기화(Synchronization)
+- 임계 영역에 여러 thread가 접근 하는 경우 한 thread가 수행 하는 동안 공유 자원을
+lock하려 다른 thread의 접근을 막음
+
+- 동기화를 잘못 구현하면 deadlock에 빠질 수 있음
+
+- 자바에서 동기화 구현
+synchronized 수행문과 synchronized 메서드를 이용
+
+- synchronized 수행문
+```
+synchronized(참조형 수식) {
+
+}	
+참조형 수식에 해당되는 객체에 lock을 건다.
+```
+___
+### synchronized 메서드
+- 현재 이 메서드가 속해 있는 객체에 lock을 건다.
+
+- synchronized 메서드 내에서 다른 synchronized 메서드를 호출하지 않는다.
+(deadlock 방지위해)
+
+- wait() : 리소스가 더 이상 유효하지 않은 경우 리소스가 사용 가능할 때 까지 위해 
+thread를 non-runnable 상태로 전환
+
+- wait() 상태가 된 thread는 notify()가 호출 될 때까지 기다린다.
+
+- notify() : wait()하고 있는 thread 중 한 thread를 runnable 한 상태로 깨움
+
+- notifyAll() : wait()하고 있는 모든 thread가 runnable 한 상태가 되도록 함
+
+- notify()보다 notifyAll()을 사용하기를 권장
+
+- 특정 thread가 통지를 받도록 제어 할 수 없으므로 모두 깨운 후 scheduler에 CPU를
+점유하는 것이 좀 더 공평하다고 함
