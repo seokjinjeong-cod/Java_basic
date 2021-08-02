@@ -394,7 +394,7 @@ synchronized 수행문과 synchronized 메서드를 이용
 synchronized(참조형 수식) {
 
 }	
-참조형 수식에 해당되는 객체에 lock을 건다.
+참조형 수식에 해당되는 객체에 lock을 건다. 
 ```
 ___
 ### synchronized 메서드
